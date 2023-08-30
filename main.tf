@@ -33,13 +33,13 @@ resource "aws_docdb_cluster" "main" {
   master_password        = data.aws_ssm_parameter.password.value
   db_subnet_group_name   = aws_docdb_subnet_group.main.name
   vpc_security_group_ids = [ aws_security_group.main.id]
-  kms_key_id = var.kms_key_arn
-  storage_encrypted = true
+  kms_key_id             = var.kms_key_arn
+  storage_encrypted      = true
  }
 
 resource "aws_docdb_cluster_instance" "main" {
-  count = var.db_instance_count
-  identifier = "${var.component}-${var.env}-${count.index}"
+  count              = var.db_instance_count
+  identifier         = "${var.component}-${var.env}-${count.index}"
   cluster_identifier = aws_docdb_cluster.main.id
-  instance_class = var.instance_class
+  instance_class     = var.instance_class
 }
