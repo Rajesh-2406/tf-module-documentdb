@@ -27,7 +27,7 @@ resource "aws_security_group" "main" {
 }
 resource "aws_docdb_cluster" "main" {
   cluster_identifier     = "${var.component}-${var.env}"
-  engine                 =  var.engine
+  engine                 = var.engine
   engine_version         = var.engine_version
   master_username        = data.aws_ssm_parameter.username.value
   master_password        = data.aws_ssm_parameter.password.value
