@@ -35,6 +35,7 @@ resource "aws_docdb_cluster" "main" {
   vpc_security_group_ids = [ aws_security_group.main.id]
   kms_key_id             = var.kms_key_arn
   storage_encrypted      = true
+  skip_final_snapshot    = true
  }
 
 resource "aws_docdb_cluster_instance" "main" {
